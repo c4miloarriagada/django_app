@@ -1,9 +1,9 @@
 
 from django.urls import path
-from . import views
+from .views import landing_page, index_form
 
 
 urlpatterns = [
-    path('', views.landing_page)
-
+    path('landing', landing_page, name='landing_page'),
+    path('landing/form', index_form, name='index_form')
 ]

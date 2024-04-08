@@ -1,0 +1,249 @@
+:root {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+
+.navbar {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 63px;
+  padding: 20px 20px;
+  background-color: #212529;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.logo span {
+  background-color: #ff9900;
+  color: #000;
+  padding: 5px 5px 5px 5px;
+  border-radius: 5px;
+}
+
+.navbar a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  margin-left: 20px;
+  padding: 10px 10px 10px 10px;
+}
+
+.navbar a:hover {
+  background-color: #326394;
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+.contenedor {
+  margin-top: 15rem;
+  height: 40rem;
+  padding-bottom: 63px;
+  display: flex;
+  gap: 1rem;
+}
+
+.contenedor__resumen {
+  margin-top: 23px;
+  display: flex;
+  height: 100%;
+  color: white;
+  width: 30%;
+  border: 1px white solid;
+  border-radius: 6px;
+  flex-direction: column;
+}
+
+.contenedor__envio {
+  display: flex;
+  height: 100%;
+  margin-top: 23px;
+  width: 70%;
+  border: 1px white solid;
+  border-radius: 6px 6px 0 0;
+  color: white;
+  flex-direction: column;
+}
+
+h2 {
+  background-color: #212529;
+  width: 100%;
+  color: white;
+  height: min-content;
+  padding: 10px;
+  border-radius: 6px 6px 0 0;
+}
+
+.contenedor__envio__form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.contenedor__envio__form form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contenedor__envio__form label {
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+}
+
+.contenedor__envio__form form span {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contenedor__envio__form form span input {
+  max-width: 20rem;
+}
+
+.contenedor__envio__form form span select {
+  max-width: 20rem;
+}
+
+.contenedor__envio__form form button {
+  max-width: 10rem;
+  margin-top: 2rem;
+}
+
+.contenedor__resumen__checkout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.total {
+  height: 50%;
+  border-bottom: 1px solid white;
+}
+.carro {
+  height: 50%;
+}
+
+h3 {
+  padding: 10px;
+  font-size: 1.2rem !important;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  margin-bottom: 0px !important;
+}
+
+.total span {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.contenedor__resumen__carro {
+  width: 100%;
+
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  max-height: min-content;
+}
+
+.contenedor__resumen__carro img {
+  width: 50%;
+  object-fit: contain;
+
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+}
+.resumen span {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.resumen span p {
+  text-overflow: ellipsis;
+  margin-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .total span {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .contenedor {
+    flex-direction: column;
+    margin-top: 15rem;
+    height: 45rem;
+    padding-bottom: 63px;
+    display: flex;
+    gap: 1rem;
+  }
+  .contenedor__envio {
+    width: 100%;
+  }
+  .resumen span {
+    font-size: 0.5rem;
+  }
+
+  .contenedor__resumen {
+    width: 100%;
+  }
+
+  .resumen {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    height: min-content;
+    & span {
+      font-size: 1em;
+    }
+  }
+
+  .carro {
+    height: 30rem;
+  }
+}
