@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'duocgame',
 ]
 
 MIDDLEWARE = [
@@ -84,16 +85,30 @@ WSGI_APPLICATION = 'djangoapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.oracle",
-    #     "NAME": "ORCLCDB",
-    #     "USER": "db_user",
-    #     "PASSWORD": "db_user_pass",
-    #     "HOST": "0.0.0.0",
-    #     "PORT": "1521",
-    # }
+     "default": {
+         "ENGINE": "django.db.backends.oracle",
+         "NAME": "localhost:1521/orcl", #aqui cambian el orcl por xe (depende de con cual trabajen)
+         "USER": "AdminDuocGame",
+         "PASSWORD": "duoc",
+        
+     }
 }
 
+# Este script use para la creacion del usuario en la base de datos Oracle
+
+#ALTER SESSION SET "_ORACLE_SCRIPT"=true;
+
+#CREATE USER AdminDuocGame IDENTIFIED BY duoc
+#DEFAULT TABLESPACE "USERS"
+#TEMPORARY TABLESPACE "TEMP";
+
+#-- QUOTAS
+#ALTER USER AdminDuocGame QUOTA UNLIMITED ON USERS;
+
+#-- ROLES
+#GRANT "RESOURCE" TO AdminDuocGame;
+#GRANT "CONNECT" TO AdminDuocGame;
+#ALTER USER AdminDuocGame DEFAULT ROLE "RESOURCE","CONNECT";
 
 
 # Password validation
@@ -131,8 +146,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL= '/login'
+
+ROLES = {
+    ('admin', 'ADMINISTRADOR'),
+    ('cliente', 'CLIENTE'),
+}
+

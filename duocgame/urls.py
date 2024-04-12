@@ -1,9 +1,12 @@
 
 from django.urls import path
-from .views import landing_page, index_form
+from .views import landing_page, singup, login, shoppingcart
 
 
 urlpatterns = [
-    path('landing', landing_page, name='landing_page'),
-    path('landing/form', index_form, name='index_form')
+    path('', landing_page, name='landing_page'),
+    path('singup/', singup, name='singup'),
+    path('login/', login, name='login'),
+    path('shoppingcart/', shoppingcart, name='shoppingcart')
 ]
+
