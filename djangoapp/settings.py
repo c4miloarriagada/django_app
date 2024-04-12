@@ -95,15 +95,14 @@ db_user = os.environ.get('DB_USER')
 db_password = os.environ.get('DB_PASSWORD')
 
 DATABASES = {
-     "default": {
-         "ENGINE": "django.db.backends.oracle",
-         "USER": "system",
-         "PASSWORD": "oracle",
-         "HOST": "localhost",
-         "PORT": "1521"
-     }
+    "default": {
+        "ENGINE": "django.db.backends.oracle",
+        "USER": db_user,
+        "PASSWORD": db_password,
+        "HOST": db_host,
+        "PORT": "1521"
+    }
 }
-
 # Este script use para la creacion del usuario en la base de datos Oracle
 
 #ALTER SESSION SET "_ORACLE_SCRIPT"=true;
