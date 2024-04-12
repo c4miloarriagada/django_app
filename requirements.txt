@@ -1,0 +1,4 @@
+django==5.0.3
+oracledb==2.1.2
+python-dotenv==1.0.1
+

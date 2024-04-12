@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,13 +90,17 @@ WSGI_APPLICATION = 'djangoapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+db_host = os.environ.get('DB_HOST')
+db_user = os.environ.get('DB_USER')
+db_password = os.environ.get('DB_PASSWORD')
+
 DATABASES = {
      "default": {
          "ENGINE": "django.db.backends.oracle",
-         "NAME": "localhost:1521/orcl", #aqui cambian el orcl por xe (depende de con cual trabajen)
-         "USER": "AdminDuocGame",
-         "PASSWORD": "duoc",
-        
+         "USER": "system",
+         "PASSWORD": "oracle",
+         "HOST": "localhost",
+         "PORT": "1521"
      }
 }
 

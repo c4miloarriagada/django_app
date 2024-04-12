@@ -23,4 +23,52 @@ def login(request):
     return render(request, "login.html")
 
 def shoppingcart(request):
-    return render(request, "shoppingcart.html")
+    return render(request, "shopping_cart.html")
+
+
+def admin_panel(request):
+    return render(request, "admin_panel.html")
+
+
+def cat_accion(request):
+    return render(request, "cat_accion.html")
+
+
+def cat_terror(request):
+    return render(request, "cat_terror.html")
+
+
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+
+def checkout(request):
+    return render(request, "checkout.html")
+
+
+def login(request):
+    return render(request, "login.html")
+
+
+def profile_modification(request):
+    return render(request, "profile_modification.html")
+
+
+def restore_pass(request):
+    return render(request, "restore_pass.html")
+
+
+def shopping_cart(request):
+    return render(request, "shopping_cart.html")
+
+
+def signup(request):
+    return render(request, "singup.html")
+
+
+def user_panel(request):
+    return render(request, "user_panel.html")
+
+
+def visualizacion(request):
+    return render(request, "visualizacion.html")
