@@ -103,6 +103,12 @@ DATABASES = {
         "PORT": "1521"
     }
 }
+
+#Prueba, ignorar :3
+#"NAME": "localhost:1521/orcl",
+#"USER": "AdminDuocGame",
+#"PASSWORD": "duoc",
+
 # Este script use para la creacion del usuario en la base de datos Oracle
 
 #ALTER SESSION SET "_ORACLE_SCRIPT"=true;

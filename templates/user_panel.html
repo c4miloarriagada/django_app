@@ -13,10 +13,19 @@
 
 <body class="wrapper">
   <header class="header">
-    <a href="../dashboard/index.html" class="logo">Gamer <span>DUOC</span></a>
+    <a href="{% url 'landing_page' %}" class="logo"
+    >Gamer <span>DUOC</span></a
+  >
     <nav class="navbar">
-      <a href="../form/index.html">Registrarse</a>
-      <a href="../wip/index.html">Iniciar Sesión</a>
+      {% if user.is_authenticated %}
+      <form id="logoutForm" method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <a href="#" onclick="document.getElementById('logoutForm').submit()"
+          >Cerrar sesión</a
+        >
+      </form>
+      {% else %}
+      {% endif %}
       <a href="../carrito/index.html"><img src="../../static/shopping-cart_icon-icons.com_72552.svg" alt="Carrito" />
         <span id="cuenta-carrito">0</span>
       </a>

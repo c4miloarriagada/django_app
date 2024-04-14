@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="es">
@@ -8,27 +9,38 @@
 
     <title>GamerDUOC</title>
 
-    <link rel="stylesheet" href="static/css/style_dashboard.css" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <script src="./../js/shoppingcart.js" defer></script>
+    <script src="{% static 'js/shoppingcart.js' %}" defer></script>
   </head>
 
   <body class="wrapper">
     <header class="header">
-      <a href="index.html" class="logo">Gamer <span>DUOC</span></a>
+      <a href="{% url 'landing_page' %}" class="logo"
+        >Gamer <span>DUOC</span></a
+      >
       <nav class="navbar">
-        <a href="./../form/index.html">Registrarse</a>
-        <a href="./../inicio_sesion/index.html">Iniciar Sesión</a>
-        <a href="./../carrito/index.html"
+        {% if user.is_authenticated %}
+        <form id="logoutForm" method="POST" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <a href="#" onclick="document.getElementById('logoutForm').submit()"
+            >Cerrar sesión</a
+          >
+        </form>
+        {% else %}
+        <a href="{% url 'signup' %}">Registrarse</a>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+        {% endif %}
+        <a href="{% url 'shoppingcart'%}"
           ><img
-            src="./../../static/shopping-cart_icon-icons.com_72552.svg"
+            src="../../static/shopping-cart_icon-icons.com_72552.svg"
             alt="Carrito"
           />
-          <span id="cuenta-carrito">0</span></a
-        >
+          <span id="cuenta-carrito">0</span>
+        </a>
       </nav>
     </header>
 
@@ -44,14 +56,14 @@
     <main>
       <div class="contenedor-categorias">
         <div class="categoria">
-          <a href="./../terror/index.html">
+          <a href="{%url 'cat_terror'%}">
             <img src="./../../static/categoria_terror.jpg" alt="Terror" />
             <h2>TERROR</h2>
           </a>
         </div>
 
         <div class="categoria">
-          <a href="../accion/index.html">
+          <a href="{%url 'cat_accion'%}">
             <img src="./../../static/categoria_accion.jpg" alt="Accion" />
             <h2>ACCIÓN</h2>
           </a>

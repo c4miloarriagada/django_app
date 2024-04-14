@@ -17,11 +17,13 @@
 
 <body class="wrapper">
   <header class="header">
-    <a href="../dashboard/index.html" class="logo">Gamer <span>DUOC</span></a>
+    <a href="{% url 'landing_page' %}" class="logo"
+    >Gamer <span>DUOC</span></a
+  >
     <nav class="navbar">
       <nav class="navbar">
-        <a href="../inicio_sesion/index.html">Iniciar Sesión</a>
-        <a href="../carrito/index.html"><img src="./../../static/shopping-cart_icon-icons.com_72552.svg"
+        <a href="{% url 'login' %}">Iniciar Sesión</a>
+        <a href="{% url 'shoppingcart' %}"><img src="./../../static/shopping-cart_icon-icons.com_72552.svg"
             alt="Carrito" />
           <span id="cuenta-carrito">0</span></a </nav>
       </nav>
@@ -35,7 +37,8 @@
     </p>
     <section class="container">
       <div class="formulario">
-        <form id="form">
+        <form id="form" method="POST">
+          {% csrf_token %}
           <div class="mb-3">
             <label for="name" class="form-label">Nombre Completo:</label>
             <div class="input-group">
@@ -47,7 +50,7 @@
                 <i class="fas fa-envelope"></i>
               </span>
               <input type="text" autocomplete="off" class="form-control" placeholder="Nombre Completo" id="name"
-                name="name" required />
+                name="first_name" required />
             </div>
           </div>
           <div class="mb-3">
@@ -62,7 +65,7 @@
                 <i class="fas fa-envelope"></i>
               </span>
               <input type="varchar" autocomplete="off" class="form-control" placeholder="Nombre Usuario" id="name_user"
-                name="name_user" required />
+                name="username" required />
             </div>
           </div>
           <div class="mb-3">
@@ -100,7 +103,7 @@
                     d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
                 </svg><i class="fas fa-envelope"></i></span>
               <input type="password" autocomplete="off" class="form-control" placeholder="Confirmar Contraseña"
-                id="password" name="password" required />
+                id="confirm-password" name="confirm-password" required />
             </div>
           </div>
           <div class="mb-3">
