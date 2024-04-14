@@ -13,20 +13,16 @@
 
 <body class="wrapper">
   <header class="header">
-    <a href="{% url 'landing_page' %}" class="logo"
-    >Gamer <span>DUOC</span></a
-  >
+    <a href="{% url 'landing_page' %}" class="logo">Gamer <span>DUOC</span></a>
     <nav class="navbar">
       {% if user.is_authenticated %}
       <form id="logoutForm" method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
-        <a href="#" onclick="document.getElementById('logoutForm').submit()"
-          >Cerrar sesión</a
-        >
+        <a href="#" onclick="document.getElementById('logoutForm').submit()">Cerrar sesión</a>
       </form>
       {% else %}
       {% endif %}
-      <a href="../carrito/index.html"><img src="../../static/shopping-cart_icon-icons.com_72552.svg" alt="Carrito" />
+      <a href="/shoppingcart"><img src="/static/icons/shopping-cart.svg" alt="Carrito" />
         <span id="cuenta-carrito">0</span>
       </a>
     </nav>
@@ -41,8 +37,8 @@
           <p>Correo:</p>
           <p>Fecha de Creación de Cuenta:</p>
           <div class="buttons">
-            <button class="button"><a href="./../modificar_perfil/index.html">Modificar Perfil</a></button>
-            <button class="button"><a href="./../restablecer_contrasena/index.html">Restablecer Contraseña</a></button>
+            <button class="button"><a href="/profilemodification">Modificar Perfil</a></button>
+            <button class="button"><a href="/restorepass">Restablecer Contraseña</a></button>
           </div>
         </div>
     </section>
