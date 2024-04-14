@@ -116,3 +116,7 @@ def user_panel(request):
 
 def visualizacion(request):
     return render(request, "visualizacion.html")
+
+
+def wip(request):
+    return render(request, "wip.html")

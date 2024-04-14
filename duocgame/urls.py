@@ -11,11 +11,11 @@ from .views import (
     login_view,
     profile_modification,
     restore_pass,
-    shopping_cart,
     shoppingcart,
     signup,
     user_panel,
     visualizacion,
+    wip
 )
 
 urlpatterns = [
@@ -30,9 +30,9 @@ urlpatterns = [
     path("checkout/", checkout, name="checkout"),
     path("profilemodification/", profile_modification, name="profile_modification"),
     path("restorepass/", restore_pass, name="restore_pass"),
-    path("shoppingcart/", shoppingcart, name="shopping_cart"),
     path("user_panel/", user_panel, name="user_panel"),
     path("visualizacion/", visualizacion, name="visualizacion"),
+    path("categoria/wip", wip, name="wip"),
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
 ]
 
