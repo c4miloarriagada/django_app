@@ -15,7 +15,8 @@ from .views import (
     signup,
     user_panel,
     visualizacion,
-    wip
+    wip,
+    form_juegos
 )
 
 urlpatterns = [
@@ -34,5 +35,6 @@ urlpatterns = [
     path("visualizacion/", visualizacion, name="visualizacion"),
     path("categoria/wip", wip, name="wip"),
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
+    path("form_juegos/", form_juegos, name="form_juegos"),
 ]
 

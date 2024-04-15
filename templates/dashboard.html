@@ -79,8 +79,33 @@
       </div>
     </div>
   </main>
-
-  <footer></footer>
+  <div class="row">
+    <h2>Próximos juegos a la venta:</h2>
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Categoria</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for juego in juegos %}
+          <tr>
+            <td>{{ juego.name }}</td>
+            <td>{{ juego.description }}</td>
+            <td>{{ juego.price }}</td>
+            <td>{{ juego.category }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>  
+  </div>
+  <footer>
+    <p>© 2021 GamerDUOC. Todos los derechos reservados.</p>
+  </footer>
 </body>
 
 </html>

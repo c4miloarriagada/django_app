@@ -2,9 +2,10 @@ from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from .forms import GameForm
 
 from .models import UserProfile
-
+from .models import Game
 # Create your views here.
 
 
@@ -80,7 +81,9 @@ def cat_terror(request):
 
 
 def dashboard(request):
-    return render(request, "dashboard.html")
+    juegos = Game.objects.all()
+    datos = {'juegos': juegos}
+    return render(request, "dashboard.html", datos)
 
 
 def checkout(request):
@@ -120,3 +123,18 @@ def visualizacion(request):
 
 def wip(request):
     return render(request, "wip.html")
+
+def form_juegos(request):
+    datos = {
+        'form': GameForm()
+    }
+    if request.method == "POST":
+        form = GameForm(request.POST)
+        if form.is_valid():
+            form.save()
+            datos['mensaje'] = "Juego guardado correctamente"
+            return redirect('dashboard')
+        else:
+            datos['mensaje'] = "Error al guardar el juego"
+    return render(request, "form_juegos.html", {'form': GameForm()})
+
