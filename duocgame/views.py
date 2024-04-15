@@ -57,7 +57,7 @@ def login_view(request):
             login(request, user)
             return redirect("landing_page")
         else:
-            return render(request, "login.html", {"error": "Invalid login"})
+            return render(request, "login.html", {"error": "Usuario o contraseña incorrectos"})
     return render(request, "login.html")
 
 
@@ -124,7 +124,10 @@ def visualizacion(request):
 def wip(request):
     return render(request, "wip.html")
 
+@login_required
 def form_juegos(request):
+    if request.session["role"] != "admin":
+        return HttpResponse("No tienes permisos para acceder a esta página") #puse la restriccion, despues lo enlazamos a la pg de admin
     datos = {
         'form': GameForm()
     }
