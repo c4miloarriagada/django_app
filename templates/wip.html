@@ -13,9 +13,22 @@
     <header class="header">
         <a href="/" class="logo">Gamer <span>DUOC</span></a>
         <nav class="navbar">
-            <a href="/login">Registrarse</a>
-            <a href="/login">Iniciar Sesión</a>
-        </nav>
+            {% if user.is_authenticated %}
+              {%if perfil == 'admin' %}
+                <a href="{%url 'admin_panel' %}">Hola: {{request.user.username}}</a>
+              {%else%}
+                <a href="{%url 'user_panel' %}">Hola: {{request.user.username}}</a>
+              {%endif%}
+            <form id="logoutForm" method="POST" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <a href="#" onclick="document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+              {% else %}
+              <a href="{%url 'signup'%}">Registrarse</a>
+              <a href="{%url 'login'%}">Iniciar Sesión</a>
+              {% endif %}
+      
+              
+          </nav>
     </header>
 
     <div class="container">

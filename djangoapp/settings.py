@@ -97,10 +97,9 @@ db_password = os.environ.get('DB_PASSWORD')
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.oracle",
-        "USER": db_user,
-        "PASSWORD": db_password,
-        "HOST": db_host,
-        "PORT": "1521"
+        "NAME": "localhost:1521/orcl",
+        "USER": "AdminDuocGame",
+        "PASSWORD": "duoc",
     }
 }
 

@@ -10,8 +10,12 @@ from .models import Game
 
 
 def landing_page(request):
-    return render(request, "landing_page.html")
-
+    if request.user.is_authenticated:
+        perfil = request.session.get("role")
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
+    return render(request, "landing_page.html", context)
 
 def signup(request):
     if request.method == "POST":
@@ -73,21 +77,41 @@ def admin_panel(request):
 
 
 def cat_accion(request):
-    return render(request, "cat_accion.html")
+    perfil = request.session.get("role") 
+    if request.user.is_authenticated:
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
+    return render(request, "cat_accion.html", context)
 
 
 def cat_terror(request):
-    return render(request, "cat_terror.html")
+    perfil = request.session.get("role") 
+    if request.user.is_authenticated:
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
+    return render(request, "cat_terror.html", context)
 
 
 def dashboard(request):
     juegos = Game.objects.all()
-    datos = {'juegos': juegos}
+    perfil = request.session.get("role")  
+    datos = {'juegos': juegos, 'perfil': perfil}
+    if request.user.is_authenticated:
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
     return render(request, "dashboard.html", datos)
 
 
 def checkout(request):
-    return render(request, "checkout.html")
+    perfil = request.session.get("role") 
+    if request.user.is_authenticated:
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
+    return render(request, "checkout.html", context)
 
 
 @login_required
@@ -104,8 +128,13 @@ def restore_pass(request):
     return render(request, "restore_pass.html")
 
 
-def shopping_cart(request):
-    return render(request, "shopping_cart.html")
+def shopping_cart(request): 
+    perfil = request.session.get("role") 
+    if request.user.is_authenticated:
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
+    return render(request, "shopping_cart.html", context)
 
 
 @login_required
@@ -122,7 +151,12 @@ def visualizacion(request):
 
 
 def wip(request):
-    return render(request, "wip.html")
+    if request.user.is_authenticated:
+        perfil = request.session.get("role")
+        context = {"perfil": perfil}
+    else:  # Si el usuario no está autenticado
+        context = {}
+    return render(request, "wip.html", context)
 
 @login_required
 def form_juegos(request):

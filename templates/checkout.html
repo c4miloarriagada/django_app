@@ -19,16 +19,18 @@
     <a href="{% url 'landing_page' %}" class="logo">Gamer <span>DUOC</span></a>
     <nav class="navbar">
       {% if user.is_authenticated %}
+        {%if perfil == 'admin' %}
+          <a href="{%url 'admin_panel' %}">Hola: {{request.user.username}}</a>
+        {%else%}
+          <a href="{%url 'user_panel' %}">Hola: {{request.user.username}}</a>
+        {%endif%}
       <form id="logoutForm" method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
         <a href="#" onclick="document.getElementById('logoutForm').submit()">Cerrar sesión</a>
-      </form>
-      <a href="/profilemodification">Modificación de perfil</a>
-      {% else %}
-      <a href="/login">Registrarse</a>
-      <a href="{% url 'login' %}" class="btn btn-secondary">Iniciar sesión</a>
-      {% endif %}
-      <a href="/restorepass">Restablecer contraseña</a>
+        {% else %}
+        <a href="{%url 'signup'%}">Registrarse</a>
+        <a href="{%url 'login'%}">Iniciar Sesión</a>
+        {% endif %}
     </nav>
   </header>
   <main class="container contenedor">
