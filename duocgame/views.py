@@ -137,12 +137,12 @@ def shopping_cart(request):
     return render(request, "shopping_cart.html", context)
 
 
-# @login_required
+@login_required
 def user_panel(request):
-    # if request.session["role"] != "cliente":
-    #     return HttpResponse(
-    #         "Solo los clientes puede ver su perfil desde esta pagina, por favor si es administrador dirijase a la pagina de administrador"
-    #     )
+    if request.session["role"] != "cliente":
+        return HttpResponse(
+            "Solo los clientes puede ver su perfil desde esta pagina, por favor si es administrador dirijase a la pagina de administrador"
+        )
     return render(request, "user_panel.html")
 
 
