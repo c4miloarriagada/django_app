@@ -123,11 +123,29 @@
 }
 
 .historial {
+  margin-top: 100px !important;
   background-color: #a9adbee7;
-  max-width: 1000px;
+  max-width: 80vw;
   display: flex;
   flex-wrap: wrap;
   margin: 10px 0;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
+}
+
+button > a {
+  text-decoration: none;
+  color: white;
+}
+
+h2 {
+  letter-spacing: 0.045em;
+}
+
+.panel {
+  margin-top: 100px;
+  border: 1px white solid;
+  padding: 20px;
+  border-radius: 10px;
 }
