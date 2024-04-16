@@ -92,8 +92,6 @@
   line-height: 15px;
 }
 
-/* Estilo para el contenido */
-
 .container {
   max-width: 1170px;
   margin: 10px;
@@ -123,14 +121,14 @@
 }
 
 .historial {
-  margin-top: 100px !important;
+  padding: 20px;
   background-color: #a9adbee7;
-  max-width: 80vw;
+  width: 80vw;
   display: flex;
   flex-wrap: wrap;
-  margin: 10px 0;
-  padding: 20px;
-  border-radius: 10px;
+
+  margin-top: 100px;
+  border-radius: 20px;
   text-align: center;
 }
 
@@ -139,13 +137,12 @@ button > a {
   color: white;
 }
 
-h2 {
-  letter-spacing: 0.045em;
+.panel {
+  border: 1px white solid;
+  border-radius: 0.3rem;
+  padding: 20px;
 }
 
-.panel {
-  margin-top: 100px;
-  border: 1px white solid;
-  padding: 20px;
-  border-radius: 10px;
+h2 {
+  letter-spacing: 0.045em;
 }

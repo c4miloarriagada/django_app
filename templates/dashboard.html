@@ -20,11 +20,11 @@
     <a href="{% url 'landing_page' %}" class="logo">Gamer <span>DUOC</span></a>
     <nav class="navbar">
       {% if user.is_authenticated %}
-        {%if perfil == 'admin' %}
-          <a href="{%url 'admin_panel' %}">Hola: {{request.user.username}}</a>
-        {%else%}
-          <a href="{%url 'user_panel' %}">Hola: {{request.user.username}}</a>
-        {%endif%}
+      {%if perfil == 'admin' %}
+      <a href="{%url 'admin_panel' %}">Hola: {{request.user.username}}</a>
+      {%else%}
+      <a href="{%url 'user_panel' %}">Hola: {{request.user.username}}</a>
+      {%endif%}
       <form id="logoutForm" method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
         <a href="#" onclick="document.getElementById('logoutForm').submit()">Cerrar sesión</a>
@@ -32,9 +32,9 @@
         <a href="{%url 'signup'%}">Registrarse</a>
         <a href="{%url 'login'%}">Iniciar Sesión</a>
         {% endif %}
-      <a href="{% url 'shoppingcart'%}"><img src="./../static/icons/shopping-cart.svg" alt="Carrito" />
-        <span id="cuenta-carrito">0</span>
-      </a>
+        <a href="{% url 'shoppingcart'%}"><img src="./../static/icons/shopping-cart.svg" alt="Carrito" />
+          <span id="cuenta-carrito">0</span>
+        </a>
     </nav>
   </header>
 
