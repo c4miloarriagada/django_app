@@ -175,3 +175,29 @@ def form_juegos(request):
             datos['mensaje'] = "Error al guardar el juego"
     return render(request, "form_juegos.html", {'form': GameForm()})
 
+@login_required
+def mod_juegos(request, idgame):
+    if request.session["role"] != "admin":
+        return HttpResponse("No tienes permisos para acceder a esta página")
+    juego = Game.objects.get(idGame=idgame)
+    datos = {
+        'form': GameForm(instance=juego)
+    }
+    if request.method == "POST":
+        form = GameForm(request.POST, instance=juego)
+        if form.is_valid():
+            form.save()
+            datos['mensaje'] = "Juego modificado correctamente"
+            return redirect('dashboard')
+        else:
+            datos['mensaje'] = "Error al modificar el juego"
+    return render(request, "mod_juegos.html", datos)
+
+@login_required
+def eliminar_juego(request, idgame):
+    if request.session["role"] != "admin":
+        return HttpResponse("No tienes permisos para acceder a esta página")
+    juego = Game.objects.get(idGame=idgame)
+    juego.delete()
+    return redirect(to="dashboard")
+

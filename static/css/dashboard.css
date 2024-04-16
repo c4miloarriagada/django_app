@@ -151,3 +151,16 @@ header {
 .row {
   color: white;
 }
+.row th {
+  color: rgb(255, 255, 255);
+}
+
+.styled-link {
+  color: #007bff; 
+  text-decoration: none; 
+  font-weight: bold; 
+}
+
+.text-custom {
+  color: white !important;
+}

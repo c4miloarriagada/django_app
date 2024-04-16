@@ -16,7 +16,9 @@ from .views import (
     user_panel,
     visualizacion,
     wip,
-    form_juegos
+    form_juegos,
+    mod_juegos,
+    eliminar_juego,
 )
 
 urlpatterns = [
@@ -36,5 +38,7 @@ urlpatterns = [
     path("categoria/wip", wip, name="wip"),
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
     path("form_juegos/", form_juegos, name="form_juegos"),
+    path("mod_juegos/<int:idgame>/", mod_juegos, name="mod_juegos"),
+    path("eliminar_juego/<int:idgame>/", eliminar_juego, name="eliminar_juego")
 ]
 

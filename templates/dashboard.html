@@ -87,25 +87,42 @@
     <h2>Próximos juegos a la venta:</h2>
     <div class="col-12">
       <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Categoria</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for juego in juegos %}
-          <tr>
-            <td>{{ juego.name }}</td>
-            <td>{{ juego.description }}</td>
-            <td>{{ juego.price }}</td>
-            <td>{{ juego.category }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>  
+          <thead>
+              <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col" colspan="2" style="text-align: center;">Acciones</th> 
+              </tr>
+          </thead>
+          <tbody>
+              {% for juego in juegos %}
+              <tr>
+                <td class="text-custom">{{ juego.name }}</td>
+                <td class="text-custom">{{ juego.description }}</td>
+                <td class="text-custom">{{ juego.price }}</td>
+                <td class="text-custom">{{ juego.category }}</td>
+                  <td>
+                      <form method="post" action="{% url 'mod_juegos' idgame=juego.idGame %}">
+                          {% csrf_token %}
+                          <input type="hidden" name="game_id" value="{{ juego.idGame }}">
+                          <button type="submit" class="btn btn-primary">Modificar</button>
+                      </form>
+                  </td>
+                  <td>
+                      <form method="post" action="{% url 'eliminar_juego' idgame=juego.idGame %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="game_id" value="{{ juego.idGame }}">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                  </td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      <a href="{% url 'form_juegos' %}" class="styled-link">Agregar Nuevo Juego</a>
+      <br><br>
   </div>
   <footer>
     <p>© 2021 GamerDUOC. Todos los derechos reservados.</p>
