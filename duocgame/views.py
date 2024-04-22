@@ -3,11 +3,17 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import GameForm
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.parsers import JSONParser   
+from django.views.decorators.csrf import csrf_exempt
+from .models import Game
+from .serializers import GameSerializer
 
 from .models import UserProfile
 from .models import Game
 # Create your views here.
-
 
 def landing_page(request):
     if request.user.is_authenticated:
@@ -201,3 +207,18 @@ def eliminar_juego(request, idgame):
     juego.delete()
     return redirect(to="dashboard")
 
+@csrf_exempt
+@api_view(["GET", "POST"])
+def game_list(request):
+    if request.method == "GET":
+        games = Game.objects.all()
+        serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
+
+    elif request.method == "POST":
+        data = JSONParser().parse(request)
+        serializer = GameSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

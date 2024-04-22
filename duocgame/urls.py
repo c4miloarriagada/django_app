@@ -1,6 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
+
 from .views import (
     admin_panel,
     cat_accion,
@@ -19,6 +20,7 @@ from .views import (
     form_juegos,
     mod_juegos,
     eliminar_juego,
+    game_list,
 )
 
 urlpatterns = [
@@ -39,6 +41,7 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(next_page="/"), name="logout"),
     path("form_juegos/", form_juegos, name="form_juegos"),
     path("mod_juegos/<int:idgame>/", mod_juegos, name="mod_juegos"),
-    path("eliminar_juego/<int:idgame>/", eliminar_juego, name="eliminar_juego")
+    path("eliminar_juego/<int:idgame>/", eliminar_juego, name="eliminar_juego"),
+    path("api/juegos/", game_list, name="game_list")
 ]
 
