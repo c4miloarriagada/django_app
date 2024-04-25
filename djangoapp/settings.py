@@ -73,7 +73,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-        ], 
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,17 +111,17 @@ DATABASES = {
 
 # ALTER SESSION SET "_ORACLE_SCRIPT" = true
 
-
 # CREATE USER AdminDuocGame IDENTIFIED BY duoc
 # DEFAULT TABLESPACE "USERS"
 # TEMPORARY TABLESPACE "TEMP"
+
 # -- QUOTAS
-# ALTER USER AdminDuocGame QUOTA UNLIMITED ON USERS
+# ALTER USER AdminDuocGame QUOTA UNLIMITED ON USERS;
 
 # -- ROLES
-# GRANT "RESOURCE" TO AdminDuocGame
-# GRANT "CONNECT" TO AdminDuocGame
-# ALTER USER AdminDuocGame DEFAULT ROLE "RESOURCE", "CONNECT"
+# GRANT "RESOURCE" TO AdminDuocGame;
+# GRANT "CONNECT" TO AdminDuocGame;
+# ALTER USER AdminDuocGame DEFAULT ROLE "RESOURCE","CONNECT";
 
 
 # Password validation
@@ -168,7 +168,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL= '/login'
+LOGIN_URL = '/login'
 
 ROLES = {
     ('admin', 'ADMINISTRADOR'),

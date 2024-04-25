@@ -1,3 +1,4 @@
+import requests
 from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
@@ -10,7 +11,6 @@ from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from .models import Game
 from .serializers import GameSerializer
-
 from .models import UserProfile
 from .models import Game
 # Create your views here.
@@ -156,6 +156,18 @@ def visualizacion(request):
     return render(request, "visualizacion.html")
 
 
+def info_games(request):
+    url_api = 'https://www.freetogame.com/api/games'
+    response = requests.get(url_api)
+    if response.status_code == 200:
+        juegos = response.json()
+    else:
+        juegos = []
+
+    to_render = {"juegos": juegos}
+    return render(request, 'info_juegos.html', to_render)
+
+
 def wip(request):
     if request.user.is_authenticated:
         perfil = request.session.get("role")
@@ -210,6 +222,23 @@ def eliminar_juego(request, idgame):
 @csrf_exempt
 @api_view(["GET", "POST"])
 def game_list(request):
+    if request.method == "GET":
+        games = Game.objects.all()
+        serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
+
+    elif request.method == "POST":
+        data = JSONParser().parse(request)
+        serializer = GameSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@csrf_exempt
+@api_view(["GET", "POST"])
+def get_games(request):
     if request.method == "GET":
         games = Game.objects.all()
         serializer = GameSerializer(games, many=True)
