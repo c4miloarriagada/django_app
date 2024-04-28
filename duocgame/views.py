@@ -157,7 +157,10 @@ def visualizacion(request):
 
 
 def info_games(request):
-    url_api = 'https://www.freetogame.com/api/games'
+
+    genero = request.GET.get('genero', 'action')
+
+    url_api = f'https://www.freetogame.com/api/games?category={genero}'
     response = requests.get(url_api)
     if response.status_code == 200:
         juegos = response.json()

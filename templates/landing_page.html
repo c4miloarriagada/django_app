@@ -21,11 +21,11 @@
     <a href="{% url 'landing_page' %}" class="logo">Gamer <span>DUOC</span></a>
     <nav class="navbar">
       {% if user.is_authenticated %}
-        {%if perfil == 'admin' %}
-          <a href="{%url 'admin_panel' %}">Hola: {{request.user.username}}</a>
-        {%else%}
-          <a href="{%url 'user_panel' %}">Hola: {{request.user.username}}</a>
-        {%endif%}
+      {%if perfil == 'admin' %}
+      <a href="{%url 'admin_panel' %}">Hola: {{request.user.username}}</a>
+      {%else%}
+      <a href="{%url 'user_panel' %}">Hola: {{request.user.username}}</a>
+      {%endif%}
       <form id="logoutForm" method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
         <a href="#" onclick="document.getElementById('logoutForm').submit()">Cerrar sesión</a>
@@ -47,7 +47,12 @@
           <img width="50px" src="./../static/icons/sales.svg" alt="" />
           <h2>Ventas de primavera</h2>
         </span>
-        <button type="button" class="btn btn-primary">Ir a ofertas!</button>
+        <span>
+
+          <button type="button" class="btn btn-primary">Ir a ofertas!</button>
+          <button type="button" class="btn btn-info"><a style="text-decoration: none;"
+              href="/info-juegos/?genero=action">Ir a reseñas!</a> </button>
+        </span>
       </span>
       <div class="contenedor__categorias">
         <div class="container contenedor__categorias__grid">

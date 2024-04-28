@@ -99,16 +99,51 @@ body {
 
 main {
   margin-top: 6rem;
+  padding: 20px;
 }
 
 h1 {
   color: white !important;
+  letter-spacing: 0.2rem;
 }
 
 h4 {
   color: #326394 !important;
+  letter-spacing: 0.2rem;
 }
 
 p {
   color: white;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+img {
+  border-radius: 20px;
+}
+
+.card__container {
+  border-radius: 20px;
+  background-color: #212529;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin: 20px;
+  padding: 10px;
+}
+.container__grid {
+  padding: 20px;
+}
+
+label {
+  color: white;
+}
+
+.title {
+  display: flex;
+  max-height: 5rem;
+  justify-content: space-between;
 }
