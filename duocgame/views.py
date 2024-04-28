@@ -13,6 +13,8 @@ from .models import Game
 from .serializers import GameSerializer
 from .models import UserProfile
 from .models import Game
+from .models import Consola
+from .serializers import ConsolaSerializer
 # Create your views here.
 
 def landing_page(request):
@@ -233,6 +235,22 @@ def game_list(request):
     elif request.method == "POST":
         data = JSONParser().parse(request)
         serializer = GameSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+@csrf_exempt
+@api_view(["GET", "POST"])
+def consola_list(request):
+    if request.method == "GET":
+        consolas = Consola.objects.all()
+        serializer = ConsolaSerializer(consolas, many=True)
+        return Response(serializer.data)
+
+    elif request.method == "POST":
+        data = JSONParser().parse(request)
+        serializer = ConsolaSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

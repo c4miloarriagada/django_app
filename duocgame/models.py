@@ -30,6 +30,17 @@ class Game(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Consola(models.Model):
+    idConsola = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    manufacturer = models.TextField()
+    releaseDate = models.TextField()
+    storage = models.CharField(max_length=100) 
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.name
 
 class Order(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
