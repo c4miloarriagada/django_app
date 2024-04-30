@@ -6,6 +6,7 @@ from .views import (
     admin_panel,
     cat_accion,
     cat_terror,
+    cat_freetoplay,
     checkout,
     dashboard,
     landing_page,
@@ -46,6 +47,8 @@ urlpatterns = [
     path("eliminar_juego/<int:idgame>/", eliminar_juego, name="eliminar_juego"),
     path("info-juegos/", info_games, name="info-juegos"),
     path("api/juegos/", game_list, name="game_list"),
-    path("api/consolas/", consola_list, name="consola_list")
+    path("api/consolas/", consola_list, name="consola_list"),
+    path("categoria/freetoplay", cat_freetoplay, name="cat_freetoplay")
+         
 ]
 

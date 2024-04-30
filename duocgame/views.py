@@ -157,6 +157,18 @@ def user_panel(request):
 def visualizacion(request):
     return render(request, "visualizacion.html")
 
+def cat_freetoplay(request):
+    url_api = "https://www.freetogame.com/api/games?platform=pc&sort-by=popularity"
+    response = requests.get(url_api)
+    if response.status_code == 200:        
+        juegos = response.json()        
+    else:
+        juegos = []
+
+    to_render = {"juegos": juegos}
+    return render(request, "cat_freetoplay.html", to_render)
+
+
 
 def info_games(request):
 
