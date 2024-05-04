@@ -5,7 +5,10 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import GameForm
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser   
 from django.views.decorators.csrf import csrf_exempt
@@ -237,7 +240,8 @@ def eliminar_juego(request, idgame):
     return redirect(to="dashboard")
 
 @csrf_exempt
-@api_view(["GET", "POST"])
+@api_view(["GET", "DELETE", "PUT", "PATCH"])
+@permission_classes((IsAuthenticated,))
 def game_list(request):
     if request.method == "GET":
         games = Game.objects.all()
@@ -254,6 +258,7 @@ def game_list(request):
     
 @csrf_exempt
 @api_view(["GET", "POST"])
+@permission_classes((IsAuthenticated,))
 def consola_list(request):
     if request.method == "GET":
         consolas = Consola.objects.all()
@@ -284,3 +289,5 @@ def get_games(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+

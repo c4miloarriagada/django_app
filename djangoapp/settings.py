@@ -176,7 +176,7 @@ ROLES = {
 }
 
 REST_FRAMEWORK = {
-    'DEFAUT_AUTHENTICATION_CLASSES': [
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
