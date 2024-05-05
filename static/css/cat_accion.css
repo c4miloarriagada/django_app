@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .wrapper {
@@ -102,11 +102,11 @@ main {
 }
 
 .main-hero {
-  margin-top: 2rem;
+  margin-top: 5rem;
   width: 100%;
   height: 30rem;
   border-radius: 7px;
-  background-image: url("./../../static/hero-img.jpg");
+  background-image: url('https://static1.thegamerimages.com/wordpress/wp-content/uploads/2023/07/video-game-action-heroes-duke-nukem-nathan-drake-uncharted-lara-croft-tomb-raider.jpg?q=50&fit=contain&w=943&h=500&dpr=1.5');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
